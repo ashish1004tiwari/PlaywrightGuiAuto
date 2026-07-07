@@ -27,7 +27,8 @@ test('[Login] Verify that the user cannot log in with an invalid username.',{tag
         description : 'https://ashish1004tiwari-1783267471955.atlassian.net/browse/KAN-4'
     }
 }, async({page,gotToLoginURL,loginPage,commonUtils}) => {
-  const pd = commonUtils.decryptData(process.env.PASSWORD)
+  //const pd = commonUtils.decryptData(process.env.PASSWORD)
+  const pd = process.env.PASSWORD
   console.log("UserID pass "+loginpagedata.invalidUserId+" Password "+pd)
   await loginPage.login(loginpagedata.invalidUserId,pd)
   await expect(loginPage.loginPagePO.invalidtextXpath).toHaveText(loginpagedata.invalidCredentialsTextDetails)

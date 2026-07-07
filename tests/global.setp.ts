@@ -5,7 +5,8 @@ test('Global Setup for Auto Login', async ({page, loginPage, commonUtils,dashboa
 
     //const ud = commonUtils.decryptData(process.env.USER_NAME!);
     const ud = process.env.USER_NAME!;
-    const pd = commonUtils.decryptData(process.env.PASSWORD!);
+    //const pd = commonUtils.decryptData(process.env.PASSWORD!);
+    const pd = process.env.PASSWORD!;
 
     await loginPage.goToLoginPage();
     //await page.waitForURL(process.env.BASE_URL + 'web/index.php/dashboard/index');
