@@ -32,5 +32,9 @@ steps:
 - script: |
     cat env-files/.env.demo
 
-- script: SECRET_KEY=Safe npm run test
-  displayName: 'Run Test'
+- script: |
+    npx playwright test --project=chromium --headed
+  displayName: Run Playwright Tests
+  env:
+    SECRET_KEY: Safe
+    ENV_NAME: demo
