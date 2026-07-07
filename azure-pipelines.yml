@@ -34,7 +34,7 @@ steps:
 
 - script: |
     npx playwright test
-    displayName: Run Playwright Tests
-    env:
-      SECRET_KEY: Safe
-      ENV_NAME: demo
+  displayName: 'Run Playwright Tests'
+  env:
+    SECRET_KEY: Safe
+    ENV_NAME: demo
