@@ -10,7 +10,7 @@ test.use({storageState:{
     origin:[]
 }})
 
-test.describe.only('TestCases Related to Login Page', ()=>{
+test.describe.only('TestCases Related to [Login Page]', ()=>{
 
 test('[Login] Verify that the user can log in with valid username and password', {tag : ['@Smoke','@Regression','@TCID_2341'],
      annotations : { 
