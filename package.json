@@ -1,0 +1,34 @@
+{
+  "name": "auto-playwright-fw",
+  "version": "1.0.0",
+  "description": "This is a Playwright framework for automation testing for OrangeCRM application. It is designed to provide a structured and efficient way to write and execute automated tests using the Playwright testing framework.  ",
+  "main": "index.js",
+  "scripts": {
+    "test": "cross-env ENV_NAME=demo npx playwright test",
+    "test:staging": "cross-env ENV_NAME=staging npx playwright test",
+    "test:prod": "cross-env ENV_NAME=prod npx playwright test",
+    "test-demo-all": "cross-env ENV_NAME=demo npx playwright test",
+    "test-demo-ch-hd": "cross-env ENV_NAME=demo npx playwright test --project=chromium --headed",
+    "test-demo-ch-hl": "cross-env ENV_NAME=demo npx playwright test --project=chromium",
+    "show": "npx playwright show-report",
+    "test-demo-ch-ui": "cross-env ENV_NAME=demo npx playwright test --project=chromium --ui",
+    "test-demo-ch-hd-rerun": "cross-env ENV_NAME=demo npx playwright test --project=chromium --headed --last-failed",
+    "generate_allue" : "npx allure generate allure-results --clean",
+    "serve-allue" : "npx allure serve allure-results"
+  },
+  "keywords": [],
+  "author": "AK94",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.0",
+    "allure-commandline": "^2.43.0",
+    "allure-playwright": "^3.10.2"
+  },
+  "dependencies": {
+    "cross-env": "^10.1.0",
+    "crypto-js": "^4.2.0",
+    "dotenv": "^17.4.2"
+  }
+}

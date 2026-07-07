@@ -1,0 +1,6 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","11874","[Login] Verify that the user cannot log in with an invalid password","chromium","2026-07-07","passed","2026-07-07","TestCases Related to Login Page","loginmodule.spec.js","",""
+"","11526","[Login] Verify that the user cannot log in with both an invalid username and password","chromium","2026-07-07","passed","2026-07-07","TestCases Related to Login Page","loginmodule.spec.js","",""
+"","11454","[Login] Verify that the user cannot log in with an invalid username.","chromium","2026-07-07","passed","2026-07-07","TestCases Related to Login Page","loginmodule.spec.js","",""
+"","7399","[Login] Verify that the user can log in with valid username and password","chromium","2026-07-07","passed","2026-07-07","TestCases Related to Login Page","loginmodule.spec.js","",""
+"","14403","Global Setup for Auto Login","Setup","2026-07-07","passed","2026-07-07","","global.setp.ts","",""
