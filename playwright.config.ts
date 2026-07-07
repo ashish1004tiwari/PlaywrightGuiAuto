@@ -23,6 +23,7 @@ import path from 'path/win32';
 export default defineConfig({
   testDir: './tests',
   timeout: 600 * 1000, 
+  
   /* Run tests in files in parallel */
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -32,7 +33,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['allure-playwright' , {open : 'on-failure'}],   ['list']],
+  reporter: [['allure-playwright' , {open : 'never'}],   ['list']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
