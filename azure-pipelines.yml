@@ -20,8 +20,8 @@ steps:
 - script: npx playwright install --with-deps
   displayName: 'Install Playwright browser'
 
-- script: SECRET_KEY=Safe npm run test-demo-ch-hd
-  displayName: 'Run Test on Chrome'
+- script: SECRET_KEY=Safe npm run test
+  displayName: 'Run Test'
 
 
 
