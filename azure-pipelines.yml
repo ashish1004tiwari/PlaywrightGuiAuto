@@ -22,5 +22,6 @@ steps:
 
 - script: |
     export SECRET_KEY="Safe"
-    npm run test
+    export ENV_NAME="demo"
+    npx playwright test
   displayName: 'Run Playwright Tests'
