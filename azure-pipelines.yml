@@ -20,5 +20,17 @@ steps:
 - script: npx playwright install --with-deps
   displayName: 'Install Playwright browser'
 
+- script: |
+    pwd
+    ls -la
+    ls -la env-files
+
+    echo "Checking .env.demo..."
+    test -f env-files/.env.demo && echo "FOUND" || echo "NOT FOUND"
+  displayName: Verify env file
+
+- script: |
+    cat env-files/.env.demo
+
 - script: SECRET_KEY=Safe npm run test
   displayName: 'Run Test'
