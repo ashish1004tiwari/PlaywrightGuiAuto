@@ -44,3 +44,9 @@ steps:
     targetPath: 'allure-report'
     artifact: 'Allure Report'
     publishLocation: 'pipeline'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**''test-results/junit-report.xml'
+    testRunTitle: 'Playwright JUnit Report'
