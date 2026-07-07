@@ -38,3 +38,9 @@ steps:
   env:
     SECRET_KEY: Safe
     ENV_NAME: demo
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: 'allure-report'
+    artifact: 'Allure Report'
+    publishLocation: 'pipeline'
