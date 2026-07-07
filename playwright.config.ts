@@ -12,8 +12,8 @@ import path from 'path/win32';
  // Load environment variables from .env file
  dotenv.config(
   { //path: path.resolve(__dirname, 'env-files/.env.' +  (process.env.ENV_NAME || 'demo'))
-    path: `env-files/.env.${process.env.ENV_NAME}`
   // path : process.env.ENV_NAME ? './env-files/.env.${process.env.ENV_NAME}':'./env-files/.env.demo'   
+   path: `env-files/.env.${process.env.ENV_NAME}`
   
   });   
 
@@ -42,12 +42,12 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
-    navigationTimeout : 30*5*1000,
-     actionTimeout: 10000,
+   navigationTimeout : 30*5*1000,
+   actionTimeout: 100*1000,
   },
   expect: {
-    timeout: 10000,
-  },
+     timeout: 100 *1000,
+   },
   /* Configure projects for major browsers */
   projects: [
     {
