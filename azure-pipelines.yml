@@ -20,5 +20,5 @@ steps:
 - script: npx playwright install --with-deps
   displayName: 'Install Playwright browser'
 
-- script: $env:SECRET_KEY='Safe' npm run test
+- script: $env:SECRET_KEY=Safe npm run test
   displayName: 'Run Test'
