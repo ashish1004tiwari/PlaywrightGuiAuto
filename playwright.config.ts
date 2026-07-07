@@ -11,8 +11,9 @@ import path from 'path/win32';
 
  // Load environment variables from .env file
  dotenv.config(
-  { path: path.resolve(__dirname, 'env-files/.env.' +  (process.env.ENV_NAME || 'demo'))
+  { //path: path.resolve(__dirname, 'env-files/.env.' +  (process.env.ENV_NAME || 'demo'))
   // path : process.env.ENV_NAME ? './env-files/.env.${process.env.ENV_NAME}':'./env-files/.env.demo'   
+   path: `env-files/.env.${process.env.ENV_NAME}`
   
   });   
 
