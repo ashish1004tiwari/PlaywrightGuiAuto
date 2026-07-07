@@ -32,5 +32,21 @@ steps:
 - script: |
     cat env-files/.env.demo
 
-- script: SECRET_KEY=Safe npm run test
-  displayName: 'Run Test'
+- script: |
+    npx playwright test
+  displayName: 'Run Playwright Tests'
+  env:
+    SECRET_KEY: Safe
+    ENV_NAME: demo
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: 'allure-report'
+    artifact: 'Allure Report'
+    publishLocation: 'pipeline'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**''test-results/junit-report.xml'
+    testRunTitle: 'Playwright JUnit Report'
