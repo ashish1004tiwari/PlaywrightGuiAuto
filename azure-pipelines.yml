@@ -22,7 +22,3 @@ steps:
 
 - script: SECRET_KEY=Safe npm run test
   displayName: 'Run Test'
-
-
-
-
