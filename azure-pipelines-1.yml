@@ -1,0 +1,51 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+#trigger:
+#- main
+
+pool:
+  vmImage: ubuntu-latest #windows-latest
+
+steps:
+- task: NodeTaskRunnerInstaller@0
+  inputs:
+    nodeVersion: '16'
+
+- script: npm ci
+  displayName: 'Install Playwright dependencies'
+
+- script: npx playwright install --with-deps
+  displayName: 'Install Playwright browser'
+
+- script: |
+    pwd
+    ls -la
+    ls -la env-files
+
+    echo "Checking .env.demo..."
+    test -f env-files/.env.demo && echo "FOUND" || echo "NOT FOUND"
+  displayName: Verify env file
+
+- script: |
+    cat env-files/.env.demo
+
+- script: |
+    npx playwright test_api_demo
+  displayName: 'Run Playwright Tests for API'
+  env:
+    ENV_NAME: demo
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: 'allure-report'
+    artifact: 'Allure Report'
+    publishLocation: 'pipeline'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**''test-results/junit-report.xml'
+    testRunTitle: 'Playwright JUnit Report'
