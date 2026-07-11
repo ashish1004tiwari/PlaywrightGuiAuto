@@ -14,7 +14,8 @@
     "test-demo-ch-ui": "cross-env ENV_NAME=demo npx playwright test --project=chromium --ui",
     "test-demo-ch-hd-rerun": "cross-env ENV_NAME=demo npx playwright test --project=chromium --headed --last-failed",
     "generate_allue" : "npx allure generate allure-results --clean",
-    "serve-allue" : "npx allure serve allure-results"
+    "serve-allue" : "npx allure serve allure-results",
+    "test_api_demo" : "cross-env ENV_NAME=demo npx playwright test --project=apiTest"
   },
   "keywords": [],
   "author": "AK94",

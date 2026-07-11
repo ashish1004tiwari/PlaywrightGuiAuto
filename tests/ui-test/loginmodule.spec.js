@@ -1,7 +1,7 @@
 import {expect} from '@playwright/test';
-import {test} from '../fixture/hooks'
-import CommonUtils from '../utils/CommonUtils';
-import loginpagedata from '../data/loginpagedata.json';
+import {test} from '../../fixture/hooks'
+import CommonUtils from '../../utils/CommonUtils';
+import loginpagedata from '../../data/ui-data/loginpagedata.json';
 //import { LoginPage } from '../pages/LoginPage';
 
 
