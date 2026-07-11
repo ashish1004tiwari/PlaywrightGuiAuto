@@ -1,3 +1,0 @@
-UserID pass AdminPassword admin321
-Username: Admin
-Password: admin321

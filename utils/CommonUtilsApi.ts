@@ -3,46 +3,44 @@ import process from "node:process";
 import fs from 'fs';
 import path from 'path';
 import { json } from "node:stream/consumers";
-//import putput from ';
+import { APIRequestContext } from "@playwright/test";
+import { request } from "@playwright/test";
+import apipath from '../data/api-data/api-path.json';
+import restfulApiData from '../data/api-data/restful-booker-api.json'
 
-export default class CommonUtils {
-    private static SECRET_KEY = process.env.SECRET_KEY || '';
 
-    private static ensureSecretKey() {
-        if (!CommonUtils.SECRET_KEY) {
-            if (process.env.SECRET_KEY) {
-                CommonUtils.SECRET_KEY = process.env.SECRET_KEY;
-            } else {
-                throw new Error("SECRET_KEY is not defined in the environment variables.");
-            }
-        }
+export default class CommonUtilsApi {
+    private request : APIRequestContext;
+
+    constructor(request : APIRequestContext){
+        this.request = request;
+
     }
 
-    /**
-     * 
-     * Provides a method to encrypt data using AES encryption.
-     *key  =  Safe
-     * @param data 
-     * @returns 
-     */
-    public encryptData(data: string) {
-        CommonUtils.ensureSecretKey();
-        const encryptedData = cryptoJs.AES.encrypt(data, CommonUtils.SECRET_KEY).toString();
-       // console.log("Encrypted Data: ", encryptedData);
-        return encryptedData;
+    public async create_Token(){
+       // console.log(process.env.API_USER_NAME ,process.env.API_PASSWORD );
+        const response = await this.request.post(apipath.api_path,{data:{
+            "username" : process.env.API_USER_NAME,
+            "password" : process.env.API_PASSWORD
+        }})
+       // console.log(response)
+        const jsonResponse = await response.json();
+        //console.log(jsonResponse)
+        const token = jsonResponse.token;
+        return token;
+
+
     }
-    /**
-     * Provides a method to decrypt data using AES decryption.
-     * @param encryptedData 
-     * @returns 
-     */
-    public decryptData(encryptedData: string) {
-        CommonUtils.ensureSecretKey();
-        const bytes = cryptoJs.AES.decrypt(encryptedData, CommonUtils.SECRET_KEY);
-        const decryptedData = bytes.toString(cryptoJs.enc.Utf8);
-        //console.log("Decrypted Data: ", decryptedData);
-        return decryptedData;
+
+    public async create_Booking(){
+         const json_data = restfulApiData['booking_data_for_post_call'];
+         const response = await this.request.post(apipath.booking_path, {data : json_data});
+         const jsonResponse = await response.json();
+         return jsonResponse.bookingid
     }
+
+
+     
 
     /**
      * 
@@ -51,7 +49,7 @@ export default class CommonUtils {
      */
     public saveJsonResponse(jsonRes : JSON){
          const outputDir = path.join(__dirname, '../data/output-data');
-            const filePath = path.join(outputDir, 'response-output.json');
+          const filePath = path.join(outputDir, 'response-output.json');
         
           // Create the directory if it doesn't exist
           if (!fs.existsSync(outputDir)){
@@ -77,7 +75,7 @@ export default class CommonUtils {
           //fs.writeFileSync(filePath, JSON.stringify(jsonRes, null, 2), 'utf-8');
           const f = fs.readFileSync(filePath,'utf-8');
           const ids = (JSON.parse(f)).bookingid;
-          //const extractID = ids.bookingid;
+          console.log(`Current Id in record is ${ids}`)
           return ids;
 
 
