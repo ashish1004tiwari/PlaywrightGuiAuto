@@ -33,7 +33,7 @@ steps:
     cat env-files/.env.demo
 
 - script: |
-    npx playwright test_api_demo
+    npx playwright test --project=apiTest
   displayName: 'Run Playwright Tests for API'
   env:
     ENV_NAME: demo
